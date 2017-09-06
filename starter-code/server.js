@@ -38,7 +38,8 @@ app.use(express.static('./public'));
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
-  // A's: it corresponds to #5, Article.prototype.insertRecord, create.
+
+  // A's: it corresponds to #2 and #5, no methods are being used. 
   //
   response.sendFile('new.html', {root: './public'});
 });
@@ -48,6 +49,8 @@ app.get('/new', function(request, response) {
 app.get('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
+  //A's: it corresponds to #1,2,3,4,5, the fetchAll method of article.js is interacting with this piece, the C and R parts are being enacted.
   client.query('SELECT * FROM articles')
   .then(function(result) {
     response.send(result.rows);
@@ -60,6 +63,8 @@ app.get('/articles', function(request, response) {
 app.post('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+
+  //A's: 3,4, the insertRecord method is being used, the C and R are being enacted.
   client.query(
     `INSERT INTO
     articles(title, author, "authorUrl", category, "publishedOn", body)
